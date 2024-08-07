@@ -1,0 +1,142 @@
+    .opportunity{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: 5rem 8rem 20% ;
+    grid-column-gap: 5px;
+    grid-row-gap: 0px;
+    max-height:fit-content;
+    padding: 1rem;
+    color: #0a0a0a;
+    background-color: #71b2ea;
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    .opportunityTitle {
+       grid-area: 1 / 1 / 2 / 9; 
+       background-color: #c4d7e9;
+       border-radius: 5px;
+       text-align: center;
+       place-content: center;
+       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      }
+    .locationAndDate { 
+      grid-area: 2 / 1 / 3 / 6; 
+      place-content: center;  
+      margin: 0px;
+      padding-top: 1rem;
+    }
+      .locationAndDate p {
+        margin: auto;
+        color:rgb(68, 63, 63);
+      }
+      .locationAndDate h3{
+        margin: auto;
+      }
+
+    .editButton { 
+      grid-area: 2 / 7 / 3 / 8; 
+      place-content: center;
+    }
+      .editButton button {
+        font: inherit;
+        font-size: 0.9rem;
+        cursor: pointer;
+        background-color: #453d91;
+        color: #decdf2;
+        border-radius: 4px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+      .editButton button:hover,
+      .editButton button:active {
+        background-color: rgb(7, 25, 116);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+      }
+
+    .removeButton { 
+      grid-area: 2 / 8 / 3 / 9; 
+      place-content: center;
+    }
+      .removeButton button {
+        font: inherit;
+        font-size: 0.9rem;
+        cursor: pointer;
+        background-color: #dca540;
+        color: #0f0e10;
+        border-radius: 4px;
+        padding: 0.5rem 1.5rem;
+        border: none;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+      .removeButton button:hover,
+      .removeButton button:active {
+        background-color: rgb(196, 39, 39);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+      }
+
+    .requiredSkillsList { 
+      grid-area: 3 / 1 / 5 / 5;
+      background-color: whitesmoke;
+      border-radius: 5px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+      padding: .5rem;
+     }
+      .requiredSkillsList ul{
+        padding: 0px;
+        margin: 0px;
+        list-style-type: none;
+      }
+
+      .requiredSkillsList h3{
+        padding-top: 1px;
+        font-size: x-large;
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center;
+        background-color: rgb(201, 222, 241);
+        border-radius: 5px;
+        margin: 0px;
+      }
+
+    .matchedVolunteersList {
+       grid-area: 3/ 5 / 5 / 9;
+       background-color: whitesmoke;
+       box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+       border-radius: 5px;
+       padding: .5rem;
+    } 
+      .matchedVolunteersList h3{
+        padding-top: 1px;
+        font-size: x-large;
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center;
+        background-color: rgb(201, 222, 241);
+        border-radius: 5px;
+        margin: 0px;
+      }
+      .matchedVolunteersList ul{
+        padding: 0px;
+        margin: 0px;
+        list-style-type: none;
+      }
+
+  h2 {
+    margin: 0;
+    padding: .2rem;
+   
+  }
+  h3 {
+    margin: 0;
+  }
+  
+  time {
+    color:rgb(68, 63, 63);
+    font-size: medium;
+    margin-left: 1rem;
+  }
+  
+
+
+  

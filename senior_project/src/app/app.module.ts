@@ -12,6 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { NavbarComponent } from './component/navbar/navbar.component';
+import { OpportunitiesManagementComponent } from './view/home/opportunities-management/opportunities-management.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
     HomeComponent,
     LoginComponent,
     NavbarComponent,
+    OpportunitiesManagementComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [
     provideAnimationsAsync()

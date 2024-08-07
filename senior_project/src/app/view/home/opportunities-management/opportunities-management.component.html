@@ -1,0 +1,45 @@
+<menu>
+  <input
+    type="text"
+    id="search"
+    name="search"
+    [(ngModel)]="enteredSearch"
+    (ngModelChange)="onSearchChange()"
+    placeholder="Search"
+  />
+
+  <select
+    name="filterOpertunities"
+    id="filteredOpportunities"
+    (change)="onFilterChange($event)"
+  >
+    <optgroup label="By Center">
+      <option value="All">Show All Opportunities</option>
+      @for(location of locationList; track location){
+      <option value="{{ location }}">{{ location }}</option>
+      }
+    </optgroup>
+    <optgroup label="By Date">
+      <option value="60">Most Recent (60 days)</option>
+    </optgroup>
+  </select>
+  <button (click)="onStartAddingOpportunity()">Add New Event</button>
+</menu>
+
+@if (isAddingOpportunity){
+<app-new-opportunity (close)="onCloseAddOpportunity()"></app-new-opportunity>
+}
+
+<ul class="opportunity">
+  @for(opportunity of opportunities; track opportunity.opportunityId){
+  <li>
+    <app-opportunity
+      [opportunity]="opportunity"
+      (removeId)="onRemoveOpportunity($event)"
+    ></app-opportunity>
+  </li>
+  }
+</ul>
+<h2 *ngIf="opportunities.length === 0">
+  No opportunities Match your Search request
+</h2>

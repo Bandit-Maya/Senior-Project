@@ -1,0 +1,38 @@
+@if (isEditingOpportunity){
+<app-edit-opportunity
+  [opportuntity]="opportunity"
+  (close)="onCloseEditOpportunity()"
+></app-edit-opportunity>
+}
+
+<article class="opportunity">
+  <div class="opportunityTitle">
+    <h2>{{ opportunity.title }}</h2>
+  </div>
+  <div class="editButton">
+    <button (click)="onEditOpportunity()">Edit</button>
+  </div>
+  <div class="removeButton">
+    <button (click)="onRemoveOpportunity()">Remove</button>
+  </div>
+  <div class="locationAndDate">
+    <p>Location</p>
+    <h3>
+      {{ opportunity.location }} <time>On: {{ opportunity.date }}</time>
+    </h3>
+  </div>
+  <div class="requiredSkillsList">
+    <h3>Required Skills</h3>
+    <ul>
+      @for(skill of opportunity.reqSkills; track skill.value){
+      <li>{{ skill.value }}</li>
+      }
+    </ul>
+  </div>
+  <div class="matchedVolunteersList">
+    <h3>Volunteer Matches</h3>
+    <ul>
+      <li>test</li>
+    </ul>
+  </div>
+</article>
