@@ -20,7 +20,6 @@ import { OpportunitiesManagementComponent } from './view/home/opportunities-mana
     HomeComponent,
     LoginComponent,
     NavbarComponent,
-    OpportunitiesManagementComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +29,7 @@ import { OpportunitiesManagementComponent } from './view/home/opportunities-mana
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
+    OpportunitiesManagementComponent
   ],
   providers: [
     provideAnimationsAsync()
