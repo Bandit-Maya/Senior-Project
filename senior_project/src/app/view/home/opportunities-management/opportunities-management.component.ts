@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ChangeDetectorRef } from '@angular/core';
 import { OpportunityComponent } from './opportunity/opportunity.component';
 import { OpportunitiesManagementService } from './opportunities-management.service';
 import { NewOpportunityComponent } from './new-opportunity/new-opportunity.component';
@@ -15,6 +16,7 @@ import { Opportunity } from './opportunity/opportunity.model';
   styleUrl: './opportunities-management.component.css'
 })
 export class OpportunitiesManagementComponent {
+  
   private opportunitiesServices = inject(OpportunitiesManagementService)
   enteredSearch = '';
   selectedFilter = '';

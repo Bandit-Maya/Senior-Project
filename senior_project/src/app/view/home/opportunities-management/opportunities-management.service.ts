@@ -108,7 +108,6 @@ import { Opportunity } from "./opportunity/opportunity.model";
         this.http.post<{message: string}>('http://localhost:3000/api/opportunities', opportunity)
         .subscribe((responseData)=>{
             console.log(responseData.message);
-            this.opportunities.unshift(opportunity)
         });
     }
 

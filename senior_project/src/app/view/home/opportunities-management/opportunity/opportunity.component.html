@@ -24,7 +24,7 @@
   <div class="requiredSkillsList">
     <h3>Required Skills</h3>
     <ul>
-      @for(skill of opportunity.reqSkills; track skill.value){
+      @for(skill of opportunity.reqSkills; track skill.key){
       <li>{{ skill.value }}</li>
       }
     </ul>

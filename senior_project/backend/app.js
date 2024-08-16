@@ -8,7 +8,7 @@ const { default: mongoose } = require('mongoose');
 //this is how you connect to the mongoDB with your admin creds. 
 //the creds are Account: jophnpetefoster  and Password: rg2DUu9me8R6CDyr
 //The data base is being saved in the mongoDB called .....................................|pre_assignment|
-mongoose.connect('mongodb+srv://johnpetefoster:rg2DUu9me8R6CDyr@cluster0.bfdj5.mongodb.net/pre_assignment?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb+srv://johnpetefoster:rg2DUu9me8R6CDyr@cluster0.bfdj5.mongodb.net/pre_assignment1?retryWrites=true&w=majority&appName=Cluster0')
 .then(()=>{
     console.log('Connected to database!')
 })
@@ -76,10 +76,13 @@ app.post("/api/opportunities", (req, res, next)=>{
         title: req.body.title,
         location: req.body.location,
         date: req.body.date,
-        reqSkills: req.body.reqSkills
+       reqSkills: req.body.reqSkills
     });
-    opportunity.save();
-    console.log(req.body);
+
+
+    opportunity.save().then(createdOpportunity =>{
+        console.log(createdOpportunity.toObject());
+    });
     res.status(201).json({
         message: 'Opportunity added'
     });
@@ -90,7 +93,7 @@ app.get('/api/opportunities',(req, res, next)=>{
     //on the data base that meets the requirements. 
     Opportunity.find()
     .then(documents =>{
-        console.log(documents)
+        console.log(documents);
         res.json({
             message: 'Post was fetched succesfully!',
             opportunities: documents
