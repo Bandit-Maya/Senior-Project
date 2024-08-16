@@ -96,14 +96,20 @@ import { Opportunity } from "./opportunity/opportunity.model";
             )
         }
         )
-        this.opportunities.unshift({
+
+        const opportunity: Opportunity ={
             opportunityId: opportunityId,
             title: opportunityData.title,
             location: opportunityData.location,
             date: opportunityData.date,
             reqSkills: reqSkills
+            };
 
-        })
+        this.http.post<{message: string}>('http://localhost:3000/api/opportunities', opportunity)
+        .subscribe((responseData)=>{
+            console.log(responseData.message);
+            this.opportunities.unshift(opportunity)
+        });
     }
 
     removeOpportunity(opportunityId: string){
