@@ -1,74 +1,53 @@
 import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { map } from 'rxjs/operators';
+
 import { NewOppportunityData } from "./opportunity/opportunity.model";
 import { Skill } from "./opportunity/opportunity.model";
 import { Opportunity } from "./opportunity/opportunity.model";
+
 
  @Injectable({providedIn: 'root'})
  export class OpportunitiesManagementService{
     private nextOpportunityIdNum = 6;
     private freedOppotunityIdNums: string[] =[''];
-    private opportunities = [
-        {
-            opportunityId: '1',
-            title: 'Opp 1',
-            location: 'Jacksonville',
-            date: '01-1-2024',
-            reqSkills: [{key: 1, value:'RNA'},{key: 2, value: 'Painting'}, {key: 3, value: 'testskill 1'},{key: 4, value: 'testskill 2'}]
-        },
-        {
-            opportunityId: '2',
-            title: 'Opp 2',
-            location: 'Gainsville',
-            date: '01-2-2024',
-            reqSkills: [{key: 1, value: 'None'}]
-        },
-        {
-            opportunityId: '3',
-            title: 'Opp 3',
-            location: 'Panama City',
-            date: '01-3-2024',
-            reqSkills: [{key: 1, value: 'Carpentry'}]
-        },
-        {
-            opportunityId: '4',
-            title: 'Opp 4',
-            location: 'Oralando',
-            date: '01-1-2024',
-            reqSkills: [{key: 1, value: 'Painting'}]
-        }, 
-        {
-            opportunityId: '5',
-            title: 'Opp 5',
-            location: 'Gainsville',
-            date: '01-4-2024',
-                    reqSkills: [{key: 1, value: 'None'}]
-        },    
-    ]
 
-    getOpportunites(search: string, filter: string){
-        search = search.toLowerCase();
-        return this.opportunities.filter((opportunity)=>{
-            let searchMatch =
-            opportunity.title.toLowerCase().includes(search)||
-            opportunity.location.toLowerCase().includes(search)||
-            opportunity.date.toLowerCase().includes(search)||this.checkSkills(opportunity.reqSkills, search);
-            
-            if(filter =='All'){
-                return searchMatch;
-            }
-            if(filter =='60'){
-                let opportunityDate = new Date(opportunity.date);
-                let toDate = new Date()
-                toDate.setDate(toDate.getDate()+60);
-                let dateMatch = opportunityDate <= toDate;
-                return searchMatch && dateMatch;
-            }
+    constructor(private http: HttpClient){};
 
-            let filterMatch = filter ? opportunity.location === filter: true;
-            return searchMatch && filterMatch;
-        });
-    }
+    private opportunities: Opportunity[] =[]; 
     
+    getOpportunities(search: string, filter: string){
+        search = search.toLowerCase();
+    
+        return this.http.get<{message: string, opportunities: Opportunity[]}>('http://localhost:3000/api/opportunities')
+        .pipe(
+            map((opportunitiesData: { message: string; opportunities: Opportunity[] }) => {
+                this.opportunities = opportunitiesData.opportunities;
+                return this.opportunities.filter((opportunity) => {
+                    let searchMatch =
+                        opportunity.title.toLowerCase().includes(search) ||
+                        opportunity.location.toLowerCase().includes(search) ||
+                        opportunity.date.toLowerCase().includes(search) ||
+                        this.checkSkills(opportunity.reqSkills, search);
+    
+                    if (filter == 'All') {
+                        return searchMatch;
+                    }
+                    if (filter == '60') {
+                        let opportunityDate = new Date(opportunity.date);
+                        let toDate = new Date();
+                        toDate.setDate(toDate.getDate() + 60);
+                        let dateMatch = opportunityDate <= toDate;
+                        return searchMatch && dateMatch;
+                    }
+    
+                    let filterMatch = filter ? opportunity.location === filter : true;
+                    return searchMatch && filterMatch;
+                });
+            })
+        );
+    }
+
     checkSkills(skills: Skill[], search: string){
       let match = false;
       skills.forEach((skill: Skill)=>{

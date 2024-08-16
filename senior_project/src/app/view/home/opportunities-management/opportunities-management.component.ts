@@ -27,10 +27,13 @@ export class OpportunitiesManagementComponent {
     this.getOpportunities();
     this.getLocationList();
   }
-  getOpportunities(){
-    this.opportunities = this.opportunitiesServices.getOpportunites(this.enteredSearch, this.selectedFilter);
+  getOpportunities() {
+    this.opportunitiesServices.getOpportunities(this.enteredSearch, this.selectedFilter)
+      .subscribe((opportunities: Opportunity[]) => {
+        this.opportunities = opportunities;
+        this.getLocationList();  
+      });
   }
-  
   getLocationList(){
     this.locationList = this.opportunitiesServices.getLocationList();
   }
