@@ -1,0 +1,134 @@
+<h2>Create a New Volunteer</h2>
+
+<form (ngSubmit)="onSubmit()">
+  <!-- First Name -->
+  <mat-form-field appearance="fill">
+    <mat-label>First Name</mat-label>
+    <input matInput id="firstName" [(ngModel)]="newVolunteer.firstName" name="firstName">
+  </mat-form-field>
+<br>
+  <!-- Last Name -->
+  <mat-form-field appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input matInput id="lastName" [(ngModel)]="newVolunteer.lastName" name="lastName">
+  </mat-form-field>
+<br>
+  <!-- Username -->
+  <mat-form-field appearance="fill">
+    <mat-label>Username</mat-label>
+    <input matInput id="username" [(ngModel)]="newVolunteer.username" name="username">
+  </mat-form-field>
+<br>
+  <!-- Password -->
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" id="password" [(ngModel)]="newVolunteer.password" name="password">
+  </mat-form-field>
+<br>
+  <!-- Center Preference -->
+  <mat-form-field appearance="fill">
+    <mat-label>Center Preference</mat-label>
+    <mat-select [(ngModel)]="newVolunteer.centerPref" name="centerPref">
+      <mat-option value="Downtown">Downtown</mat-option>
+      <mat-option value="Southeast">Southeast</mat-option>
+      <mat-option value="pablocreek">Pablo Creek</mat-option>
+    </mat-select>
+  </mat-form-field>
+<br>
+  <!-- Skills -->
+  <mat-form-field appearance="fill">
+    <mat-label>Skills (Please separate with a comma)</mat-label>
+    <input matInput id="skills" [(ngModel)]="newVolunteer.skills" name="skills">
+  </mat-form-field>
+<br>
+  <!-- Availability -->
+  <label>Availability</label>
+  <div *ngFor="let day of daysOfWeek">
+    <mat-checkbox [(ngModel)]="day.selected" [name]="day.value" (ngModelChange)="onCheckboxChange()">
+      {{ day.name }}
+    </mat-checkbox>
+  </div>
+<br>
+  <!-- Address -->
+  <mat-form-field appearance="fill">
+    <mat-label>Address</mat-label>
+    <input matInput id="address" [(ngModel)]="newVolunteer.address" name="address">
+  </mat-form-field>
+<br>
+  <!-- Home Cell -->
+  <mat-form-field appearance="fill">
+    <mat-label>Home Cell</mat-label>
+    <input matInput id="homeCell" [(ngModel)]="newVolunteer.homeCell" name="homeCell">
+  </mat-form-field>
+<br>
+  <!-- Work Cell -->
+  <mat-form-field appearance="fill">
+    <mat-label>Work Cell</mat-label>
+    <input matInput id="workCell" [(ngModel)]="newVolunteer.workCell" name="workCell">
+  </mat-form-field>
+<br>
+  <!-- Email -->
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput id="email" [(ngModel)]="newVolunteer.email" name="email">
+  </mat-form-field>
+<br>
+  <!-- Educational Background -->
+  <mat-form-field appearance="fill">
+    <mat-label>Educational Background (Please separate with a comma)</mat-label>
+    <input matInput id="education" [(ngModel)]="newVolunteer.education" name="education">
+  </mat-form-field>
+<br>
+  <!-- Current Licenses -->
+  <mat-form-field appearance="fill">
+    <mat-label>Current Licenses</mat-label>
+    <input matInput id="currentLicenses" [(ngModel)]="newVolunteer.currentLicenses" name="currentLicenses">
+  </mat-form-field>
+<br>
+  <!-- Emergency Contact Name -->
+  <mat-form-field appearance="fill">
+    <mat-label>Emergency Contact Name</mat-label>
+    <input matInput id="emergencyName" [(ngModel)]="newVolunteer.emergencyName" name="emergencyName">
+  </mat-form-field>
+<br>
+  <!-- Emergency Contact Cell -->
+  <mat-form-field appearance="fill">
+    <mat-label>Emergency Contact Cell</mat-label>
+    <input matInput id="emergencyCell" [(ngModel)]="newVolunteer.emergencyCell" name="emergencyCell">
+  </mat-form-field>
+<br>
+  <!-- Emergency Contact Email -->
+  <mat-form-field appearance="fill">
+    <mat-label>Emergency Contact Email</mat-label>
+    <input matInput id="emergancyEmail" [(ngModel)]="newVolunteer.emergencyEmail" name="emergancyEmail">
+  </mat-form-field>
+<br>
+  <!-- Emergency Contact Address -->
+  <mat-form-field appearance="fill">
+    <mat-label>Emergency Contact Address</mat-label>
+    <input matInput id="emergencyAddress" [(ngModel)]="newVolunteer.emergencyAddress" name="emergencyAddress">
+  </mat-form-field>
+<br>
+  <!-- Drivers License on File -->
+  <mat-radio-group [(ngModel)]="newVolunteer.driversLicense" name="driversLicense">
+    <label>Drivers License on File?</label><br>
+    <mat-radio-button [value]="true">Yes</mat-radio-button>
+    <mat-radio-button [value]="false">No</mat-radio-button>
+  </mat-radio-group>
+<br>
+  <!-- Social Security Card on File -->
+  <mat-radio-group [(ngModel)]="newVolunteer.socialCard" name="socialCard">
+    <label>Social Security Card on File?</label><br>
+    <mat-radio-button [value]="true">Yes</mat-radio-button>
+    <mat-radio-button [value]="false">No</mat-radio-button>
+  </mat-radio-group>
+<br>
+  <!-- Volunteer Status Approval -->
+  <mat-radio-group [(ngModel)]="newVolunteer.status" name="status">
+    <label>Volunteer Status Approval</label><br>
+    <mat-radio-button [value]="true">Yes</mat-radio-button>
+    <mat-radio-button [value]="false">No</mat-radio-button>
+  </mat-radio-group>
+<br>
+  <button mat-raised-button color="primary" type="submit">Submit</button>
+</form>

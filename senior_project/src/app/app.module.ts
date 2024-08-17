@@ -13,6 +13,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { OpportunitiesManagementComponent } from './view/home/opportunities-management/opportunities-management.component';
+import { VolunteerComponent } from './view/volunteer/volunteer.component';
+import { CreateComponent } from './view/volunteer/create/create.component';
+import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { EditComponent } from './view/volunteer/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +29,9 @@ import { OpportunitiesManagementComponent } from './view/home/opportunities-mana
     HomeComponent,
     LoginComponent,
     NavbarComponent,
+    VolunteerComponent,
+    CreateComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +41,13 @@ import { OpportunitiesManagementComponent } from './view/home/opportunities-mana
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
-    OpportunitiesManagementComponent
+    OpportunitiesManagementComponent,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatTableModule
   ],
   providers: [
     provideAnimationsAsync()
