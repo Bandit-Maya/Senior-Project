@@ -55,13 +55,12 @@ app.get('/api/opportunities',(req, res, next)=>{
     });
 })
 
-
-
 app.delete("/api/opportunities/:id", (req, res, next) =>{
     Opportunity.deleteOne({_id: req.params.id}).then(result =>{
         console.log(result);
         res.status(200).json({message: "Opportunity deleted!"});
     })
 });
+
 
 module.exports = app;

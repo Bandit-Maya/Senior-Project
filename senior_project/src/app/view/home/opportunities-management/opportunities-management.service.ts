@@ -123,27 +123,32 @@ import { Opportunity } from "./opportunity/opportunity.model";
     }
 
     editOpportunity(opportunityId: string, editedOpportunityData: NewOppportunityData){
-        let skills = [];
-        let reqSkills: Skill[] = [];
-        skills = editedOpportunityData.reqSkills.split(", ");
-        skills.forEach((skill, index) =>{
-            reqSkills.push(
-                {
-                    key: index,
-                    value: skill
-                }
-            )
-        }
-        )
 
-        let opportunityToEdit = this.opportunities.find(opportunity => opportunity._id === opportunityId);
-        if(opportunityToEdit){
-            opportunityToEdit.title = editedOpportunityData.title;
-            opportunityToEdit.location = editedOpportunityData.location;
-            opportunityToEdit.date = editedOpportunityData.date;
-            opportunityToEdit.reqSkills = reqSkills;
-            
-        }
+        this.addOpportunity(editedOpportunityData);
+        this.removeOpportunity(opportunityId);
+
+        // let skills = [];
+        // let reqSkills: Skill[] = [];
+        // skills = editedOpportunityData.reqSkills.split(", ");
+        // skills.forEach((skill, index) =>{
+        //     reqSkills.push(
+        //         {
+        //             key: index,
+        //             value: skill
+        //         }
+        //     )
+        // }
+        // )
+
+        // let opportunityToEdit = this.opportunities.find(opportunity => opportunity._id === opportunityId);
+        // if(opportunityToEdit){
+        //     opportunityToEdit.title = editedOpportunityData.title;
+        //     opportunityToEdit.location = editedOpportunityData.location;
+        //     opportunityToEdit.date = editedOpportunityData.date;
+        //     opportunityToEdit.reqSkills = reqSkills;
+        //     this.addOpportunity(editedOpportunityData);
+        //     this.removeOpportunity(opportunityId);
+        // }
     }
 
     firstCall(){
