@@ -1,0 +1,105 @@
+<app-navbar></app-navbar>
+
+<h2 routerLink="/Volunteer/Create">Create a new volunteer</h2>
+<br>
+<h2 routerLink="/Volunteer/Edit">Edit a volunteer</h2>
+
+<table mat-table [dataSource]="volunteers">
+    <ngcontainer matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef>First Name</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.firstName}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef>Last Name</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.lastName}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef>Username</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.username}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="centerPref">
+        <th mat-header-cell *matHeaderCellDef>Center Preference</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.centerPref}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="skills">
+        <th mat-header-cell *matHeaderCellDef>Skills</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.skills}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="availability">
+        <th mat-header-cell *matHeaderCellDef>Availability</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.availability}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef>Address</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.address}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="homeCell">
+        <th mat-header-cell *matHeaderCellDef>Home Cell</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.homeCell}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="workCell">
+        <th mat-header-cell *matHeaderCellDef>Work Cell</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.workCell}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.email}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="education">
+        <th mat-header-cell *matHeaderCellDef>Education</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.education}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="currentLicenses">
+        <th mat-header-cell *matHeaderCellDef>Licenses</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.currentLicenses}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="emergencyName">
+        <th mat-header-cell *matHeaderCellDef>Emergency Contact Name</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.emergencyName}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="emergencyCell">
+        <th mat-header-cell *matHeaderCellDef>Emergency Contact Cell</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.emergencyCell}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="emergencyEmail">
+        <th mat-header-cell *matHeaderCellDef>Emergency Contact Email</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.emergancyEmail}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="emergencyAddress">
+        <th mat-header-cell *matHeaderCellDef>Emergency Contact Address</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.emergencyAddress}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="driversLicense">
+        <th mat-header-cell *matHeaderCellDef>Drivers License on file?</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.driversLicense}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="socialCard">
+        <th mat-header-cell *matHeaderCellDef>Social Security card on file?</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.socialCard}}</td>
+    </ngcontainer>
+
+    <ngcontainer matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Approval Status?</th>
+        <td mat-cell *matCellDef="let volunteer">{{volunteer.status}}</td>
+    </ngcontainer>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns:displayedColumns"></tr>
+</table>
