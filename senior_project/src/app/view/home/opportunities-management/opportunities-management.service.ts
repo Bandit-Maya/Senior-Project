@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Subject } from "rxjs";
 import { map } from 'rxjs/operators';
 
 import { NewOppportunityData } from "./opportunity/opportunity.model";
@@ -9,12 +10,15 @@ import { Opportunity } from "./opportunity/opportunity.model";
 
  @Injectable({providedIn: 'root'})
  export class OpportunitiesManagementService{
+
+    //These two vars should not be needed once mongoose is implemented. 
     private nextOpportunityIdNum = 6;
     private freedOppotunityIdNums: string[] =[''];
 
     constructor(private http: HttpClient){};
 
     private opportunities: Opportunity[] =[]; 
+    private opportunitiesUpdated = new Subject<Opportunity[]>(); 
     
     getOpportunities(search: string, filter: string){
         search = search.toLowerCase();
@@ -45,7 +49,15 @@ import { Opportunity } from "./opportunity/opportunity.model";
                     return searchMatch && filterMatch;
                 });
             })
-        );
+        ).
+        subscribe((filteredOpportunities)=>{
+            this.opportunities = filteredOpportunities;
+            this.opportunitiesUpdated.next([...this.opportunities])
+        });
+    }
+
+    getOpportunityUpdateListener(){
+        return this.opportunitiesUpdated.asObservable();
     }
 
     checkSkills(skills: Skill[], search: string){
@@ -98,21 +110,26 @@ import { Opportunity } from "./opportunity/opportunity.model";
         )
 
         const opportunity: Opportunity ={
-            opportunityId: opportunityId,
+            _id: opportunityId,
             title: opportunityData.title,
             location: opportunityData.location,
             date: opportunityData.date,
             reqSkills: reqSkills
             };
 
-        this.http.post<{message: string}>('http://localhost:3000/api/opportunities', opportunity)
+        this.http.post<{message: string, opportunityId: string}>('http://localhost:3000/api/opportunities', opportunity)
         .subscribe((responseData)=>{
             console.log(responseData.message);
+            const id = responseData.opportunityId; 
+            opportunity._id = id;
+            this.opportunities.push(opportunity);
+            this.opportunitiesUpdated.next([...this.opportunities]);
+            console.log(opportunity._id)
         });
     }
 
     removeOpportunity(opportunityId: string){
-        this.opportunities = this.opportunities.filter((opportunity)=> opportunity.opportunityId !== opportunityId);
+        this.opportunities = this.opportunities.filter((opportunity)=> opportunity._id !== opportunityId);
         this.freedOppotunityIdNums.push(opportunityId)
     }
 
@@ -130,7 +147,7 @@ import { Opportunity } from "./opportunity/opportunity.model";
         }
         )
 
-        let opportunityToEdit = this.opportunities.find(opportunity => opportunity.opportunityId === opportunityId);
+        let opportunityToEdit = this.opportunities.find(opportunity => opportunity._id === opportunityId);
         if(opportunityToEdit){
             opportunityToEdit.title = editedOpportunityData.title;
             opportunityToEdit.location = editedOpportunityData.location;
@@ -138,6 +155,10 @@ import { Opportunity } from "./opportunity/opportunity.model";
             opportunityToEdit.reqSkills = reqSkills;
             
         }
+    }
+
+    firstCall(){
+        this.opportunitiesUpdated.next([...this.opportunities]);
     }
 
  }

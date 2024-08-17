@@ -1,6 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+//Built in house imports
 import { OpportunityComponent } from './opportunity/opportunity.component';
 import { OpportunitiesManagementService } from './opportunities-management.service';
 import { NewOpportunityComponent } from './new-opportunity/new-opportunity.component';
@@ -23,18 +26,20 @@ export class OpportunitiesManagementComponent {
 
   isAddingOpportunity = false;
   opportunities: Opportunity[]=[];
+  private opportunitySubscription!: Subscription; 
   locationList: string[] = [];
 
   ngOnInit(){
     this.getOpportunities();
-    this.getLocationList();
+    this.opportunitySubscription = this.opportunitiesServices.getOpportunityUpdateListener()
+    .subscribe((opportunities: Opportunity[])=>{
+      this.opportunities = opportunities;
+      this.getLocationList();
+    });
+    this.opportunitiesServices.firstCall();
   }
   getOpportunities() {
-    this.opportunitiesServices.getOpportunities(this.enteredSearch, this.selectedFilter)
-      .subscribe((opportunities: Opportunity[]) => {
-        this.opportunities = opportunities;
-        this.getLocationList();  
-      });
+    this.opportunitiesServices.getOpportunities(this.enteredSearch, this.selectedFilter);
   }
   getLocationList(){
     this.locationList = this.opportunitiesServices.getLocationList();
@@ -53,7 +58,7 @@ export class OpportunitiesManagementComponent {
   onCloseAddOpportunity(){
     this.isAddingOpportunity = false;
     this.getLocationList();
-    this.getOpportunities();
+    //this.getOpportunities();
   }
 
   onStartAddingOpportunity(){

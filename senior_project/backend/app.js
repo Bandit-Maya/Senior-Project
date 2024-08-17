@@ -72,19 +72,18 @@ app.use((req, res, next)=> {
 //Allows you take new opportunities posted by the app. 
 app.post("/api/opportunities", (req, res, next)=>{
     const opportunity = new Opportunity({
-        oppId: req.body.opportunityId,
+        //oppId: req.body.opportunityId,
         title: req.body.title,
         location: req.body.location,
         date: req.body.date,
        reqSkills: req.body.reqSkills
     });
 
-
     opportunity.save().then(createdOpportunity =>{
-        console.log(createdOpportunity.toObject());
-    });
-    res.status(201).json({
-        message: 'Opportunity added'
+        res.status(201).json({
+            message: 'Opportunity added',
+            opportunityId: createdOpportunity._id
+        })
     });
 });
 

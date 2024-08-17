@@ -34,7 +34,7 @@ export class EditOpportunityComponent {
   }
 
   onSubmit(){
-    this.taskService.editOpportunity( this.opportuntity.opportunityId,{
+    this.taskService.editOpportunity( this.opportuntity._id,{
       title: this.enteredTitle,
       location: this.enteredLocation,
       date: this.enteredDate.toString(),
