@@ -11,10 +11,6 @@ import { Opportunity } from "./opportunity/opportunity.model";
  @Injectable({providedIn: 'root'})
  export class OpportunitiesManagementService{
 
-    //These two vars should not be needed once mongoose is implemented. 
-    private nextOpportunityIdNum = 6;
-    private freedOppotunityIdNums: string[] =[''];
-
     constructor(private http: HttpClient){};
 
     private opportunities: Opportunity[] =[]; 
@@ -86,18 +82,6 @@ import { Opportunity } from "./opportunity/opportunity.model";
         let skills = [];
         let reqSkills: Skill[] = [];
 
-        if(this.freedOppotunityIdNums.length === 1){
-            opportunityId = this.nextOpportunityIdNum.toString();
-            this.nextOpportunityIdNum += 1;
-        }
-
-        if(this.freedOppotunityIdNums.length > 1){
-            let temp = this.freedOppotunityIdNums.pop();
-            if(typeof(temp)==='string'){
-                opportunityId = temp;
-            }
-        }
-
         skills = opportunityData.reqSkills.split(", ");
         skills.forEach((skill, index) =>{
             reqSkills.push(
@@ -129,8 +113,13 @@ import { Opportunity } from "./opportunity/opportunity.model";
     }
 
     removeOpportunity(opportunityId: string){
-        this.opportunities = this.opportunities.filter((opportunity)=> opportunity._id !== opportunityId);
-        this.freedOppotunityIdNums.push(opportunityId)
+        this.http.delete('http://localhost:3000/api/opportunities/' + opportunityId)
+        .subscribe(()=>{
+            const updatesOpportunitites = this.opportunities.filter(opportunity => opportunity._id !== opportunityId);
+            this.opportunities = updatesOpportunitites;
+            this.opportunitiesUpdated.next([...this.opportunities]);
+            console.log("Opportunity ID: " + opportunityId + " Deleted.");
+        });
     }
 
     editOpportunity(opportunityId: string, editedOpportunityData: NewOppportunityData){

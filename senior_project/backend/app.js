@@ -16,56 +16,12 @@ mongoose.connect('mongodb+srv://johnpetefoster:rg2DUu9me8R6CDyr@cluster0.bfdj5.m
     console.log('Connection failed!')
 });
 
-let opportunities = [
-    // {
-    //     opportunityId: '1',
-    //     title: 'Opp 1',
-    //     location: 'Jacksonville',
-    //     date: '01-1-2024',
-    //     reqSkills: [{key: 1, value:'RNA'},{key: 2, value: 'Painting'}, {key: 3, value: 'testskill 1'},{key: 4, value: 'testskill 2'}]
-    // },
-    // {
-    //     opportunityId: '2',
-    //     title: 'Opp 2',
-    //     location: 'Gainsville',
-    //     date: '01-2-2024',
-    //     reqSkills: [{key: 1, value: 'None'}]
-    // },
-    // {
-    //     opportunityId: '3',
-    //     title: 'Opp 3',
-    //     location: 'Panama City',
-    //     date: '01-3-2024',
-    //     reqSkills: [{key: 1, value: 'Carpentry'}]
-    // },
-    // {
-    //     opportunityId: '4',
-    //     title: 'Opp 4',
-    //     location: 'Oralando',
-    //     date: '01-1-2024',
-    //     reqSkills: [{key: 1, value: 'Painting'}]
-    // }, 
-    // {
-    //     opportunityId: '5',
-    //     title: 'Opp 5',
-    //     location: 'Gainsville',
-    //     date: '01-4-2024',
-    //             reqSkills: [{key: 1, value: 'None'}]
-    // },    
-]
-
 app.use(bodyParser.json());
 
-app.use((req, res, next)=> {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-with, Content-Type, Accept"
-    );
-    res.setHeader(
-        "Access-Control-Allow-Method",
-        "GET, POST, PATCH, DELETE, OPTIONS"  
-    );
+app.use((req, res, next)=>{
+    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS")
     next();
 });
 
@@ -92,7 +48,6 @@ app.get('/api/opportunities',(req, res, next)=>{
     //on the data base that meets the requirements. 
     Opportunity.find()
     .then(documents =>{
-        console.log(documents);
         res.json({
             message: 'Post was fetched succesfully!',
             opportunities: documents
@@ -100,5 +55,13 @@ app.get('/api/opportunities',(req, res, next)=>{
     });
 })
 
+
+
+app.delete("/api/opportunities/:id", (req, res, next) =>{
+    Opportunity.deleteOne({_id: req.params.id}).then(result =>{
+        console.log(result);
+        res.status(200).json({message: "Opportunity deleted!"});
+    })
+});
 
 module.exports = app;
