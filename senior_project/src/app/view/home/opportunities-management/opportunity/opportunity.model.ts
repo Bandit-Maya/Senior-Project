@@ -4,12 +4,14 @@ export interface Skill{
 }
 
 export interface Opportunity{
-    opportunityId: string;
+    _id: string;
     title: string;
     location: string;
     date: string;
     reqSkills: Skill[];
 }
+
+
 
 export interface NewOppportunityData{
     title: string;

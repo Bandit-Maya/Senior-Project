@@ -12,99 +12,100 @@
     </ngcontainer>
 
     <ngcontainer matColumnDef="firstName">
+    <ng-container matColumnDef="firstName">
         <th mat-header-cell *matHeaderCellDef>First Name</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.firstName}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="lastName">
+    <ng-container matColumnDef="lastName">
         <th mat-header-cell *matHeaderCellDef>Last Name</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.lastName}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="username">
+    <ng-container matColumnDef="username">
         <th mat-header-cell *matHeaderCellDef>Username</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.username}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="centerPref">
+    <ng-container matColumnDef="centerPref">
         <th mat-header-cell *matHeaderCellDef>Center Preference</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.centerPref}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="skills">
+    <ng-container matColumnDef="skills">
         <th mat-header-cell *matHeaderCellDef>Skills</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.skills}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="availability">
+    <ng-container matColumnDef="availability">
         <th mat-header-cell *matHeaderCellDef>Availability</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.availability}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="address">
+    <ng-container matColumnDef="address">
         <th mat-header-cell *matHeaderCellDef>Address</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.address}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="homeCell">
+    <ng-container matColumnDef="homeCell">
         <th mat-header-cell *matHeaderCellDef>Home Cell</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.homeCell}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="workCell">
+    <ng-container matColumnDef="workCell">
         <th mat-header-cell *matHeaderCellDef>Work Cell</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.workCell}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="email">
+    <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef>Email</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.email}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="education">
+    <ng-container matColumnDef="education">
         <th mat-header-cell *matHeaderCellDef>Education</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.education}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="currentLicenses">
+    <ng-container matColumnDef="currentLicenses">
         <th mat-header-cell *matHeaderCellDef>Licenses</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.currentLicenses}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="emergencyName">
+    <ng-container matColumnDef="emergencyName">
         <th mat-header-cell *matHeaderCellDef>Emergency Contact Name</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.emergencyName}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="emergencyCell">
+    <ng-container matColumnDef="emergencyCell">
         <th mat-header-cell *matHeaderCellDef>Emergency Contact Cell</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.emergencyCell}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="emergencyEmail">
+    <ng-container matColumnDef="emergencyEmail">
         <th mat-header-cell *matHeaderCellDef>Emergency Contact Email</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.emergancyEmail}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="emergencyAddress">
+    <ng-container matColumnDef="emergencyAddress">
         <th mat-header-cell *matHeaderCellDef>Emergency Contact Address</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.emergencyAddress}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="driversLicense">
+    <ng-container matColumnDef="driversLicense">
         <th mat-header-cell *matHeaderCellDef>Drivers License on file?</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.driversLicense}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="socialCard">
+    <ng-container matColumnDef="socialCard">
         <th mat-header-cell *matHeaderCellDef>Social Security card on file?</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.socialCard}}</td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="status">
+    <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef>Approval Status?</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.status}}</td>
-    </ngcontainer>
+    </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns:displayedColumns"></tr>

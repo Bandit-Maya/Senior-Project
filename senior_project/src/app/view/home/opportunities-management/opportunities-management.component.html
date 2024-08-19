@@ -31,7 +31,7 @@
 }
 
 <ul class="opportunity">
-  @for(opportunity of opportunities; track opportunity.opportunityId){
+  @for(opportunity of opportunities; track opportunity._id){
   <li>
     <app-opportunity
       [opportunity]="opportunity"

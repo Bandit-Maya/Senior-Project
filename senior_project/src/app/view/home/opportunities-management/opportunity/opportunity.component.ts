@@ -19,7 +19,7 @@ export class OpportunityComponent {
   isEditingOpportunity = false;
 
   onRemoveOpportunity(){
-    this.removeId.emit(this.opportunity.opportunityId);
+    this.removeId.emit(this.opportunity._id);
     //this.OpportunitiesManagementService.removeOpportunity(this.opportunity.opportunityId);
   }
 

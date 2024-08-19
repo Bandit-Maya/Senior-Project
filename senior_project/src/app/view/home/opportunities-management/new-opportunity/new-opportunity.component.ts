@@ -19,14 +19,14 @@ export class NewOpportunityComponent {
   enteredDate = '';
   enteredReqSkills =  '';
 
-  private taskService = inject(OpportunitiesManagementService)
+  private opportunityService = inject(OpportunitiesManagementService)
   
   onCancel(){
     this.close.emit();
   }
 
   onSubmit(){
-    this.taskService.addOpportunity({
+    this.opportunityService.addOpportunity({
       title: this.enteredTitle,
       location: this.enteredLocation,
       date: this.enteredDate,

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +17,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { OpportunitiesManagementComponent } from './view/home/opportunities-management/opportunities-management.component';
 import { VolunteerComponent } from './view/volunteer/volunteer.component';
 import { CreateComponent } from './view/volunteer/create/create.component';
-import { FormsModule } from '@angular/forms';
+
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
@@ -23,6 +25,13 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { EditComponent } from './view/volunteer/edit/edit.component';
 import { SearchComponent } from './view/volunteer/search/search.component';
+
+import {MatCardModule} from '@angular/material/card';
+import { RegisterComponent } from './view/register/register.component';
+import { FormsModule } from '@angular/forms';
+import { AdminComponent } from './view/admin/admin.component';
+import { ManagevolunteersComponent } from './view/managevolunteers/managevolunteers.component';
+
 
 @NgModule({
   declarations: [
@@ -34,9 +43,14 @@ import { SearchComponent } from './view/volunteer/search/search.component';
     CreateComponent,
     EditComponent,
     SearchComponent
+    RegisterComponent,
+    AdminComponent,
+    ManagevolunteersComponent,
   ],
   imports: [
+    MatCardModule,
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     MatToolbarModule,
     MatIconModule,
