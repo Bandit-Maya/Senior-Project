@@ -4,14 +4,13 @@
 <br>
 <app-search></app-search>
 <table mat-table [dataSource]="volunteers">
-    <ngcontainer matColumnDef="actions">
+    <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let volunteer">
             <button mat-button (click)="onEdit(volunteer.username)">Edit</button>
         </td>
-    </ngcontainer>
+    </ng-container>
 
-    <ngcontainer matColumnDef="firstName">
     <ng-container matColumnDef="firstName">
         <th mat-header-cell *matHeaderCellDef>First Name</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.firstName}}</td>
@@ -109,4 +108,5 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns:displayedColumns"></tr>
+
 </table>

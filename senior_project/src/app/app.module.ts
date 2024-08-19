@@ -42,7 +42,7 @@ import { ManagevolunteersComponent } from './view/managevolunteers/managevolunte
     VolunteerComponent,
     CreateComponent,
     EditComponent,
-    SearchComponent
+    SearchComponent,
     RegisterComponent,
     AdminComponent,
     ManagevolunteersComponent,
