@@ -10,13 +10,15 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   username:string = '';
   password:string = '';
+  administrator:boolean = false;
 
   constructor(private loginSvc: LoginService, private router:Router){}
   
   async registerUser(){
-    let result = await this.loginSvc.CreatUser(this.username, this.password);
+    let result = await this.loginSvc.CreateUser(this.username, this.password, this.administrator);
     if(result){
       console.log(result);
+      this.router.navigate(['/Login']);
     }
   }
 }

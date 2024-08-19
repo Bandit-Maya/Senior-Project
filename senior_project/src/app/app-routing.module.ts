@@ -6,6 +6,7 @@ import { VolunteerComponent } from './view/volunteer/volunteer.component';
 import { CreateComponent } from './view/volunteer/create/create.component';
 import { EditComponent } from './view/volunteer/edit/edit.component';
 import { RegisterComponent } from './view/register/register.component';
+import { noauthGuard } from './guards/noauth.guard';
 const routes: Routes = [
   {
     path:'',
@@ -25,10 +26,12 @@ const routes: Routes = [
   },
   {
     path:'Volunteer/Create',
+    canActivate:[noauthGuard],
     component:CreateComponent
   },
   {
     path:'Volunteer/Edit',
+    canActivate:[noauthGuard],
     component:EditComponent
   }
 

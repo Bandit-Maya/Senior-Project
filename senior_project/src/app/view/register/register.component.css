@@ -24,3 +24,7 @@ input{
 mat-card{
     background-color: whitesmoke;
 }
+
+.admin-label{
+    justify-content: center;
+}

@@ -75,10 +75,10 @@ app.post('/api/user/', (req, res, next)=>{
     if(req.body.username && req.body.password && !users.find(e => e.username == req.body.username)){
         bcrypt.genSalt(saltRounds, (err, salt)=>{
             bcrypt.hash(req.body.password, salt, (err, hash)=>{
-                var newUser = {"username":req.body.username, "password":hash};
+                var newUser = {"username":req.body.username, "password":hash, "administrator":req.body.administrator};
                 users.push(newUser);
                 console.log(newUser);
-                res.status(201).send({"username":req.body.username, "password":hash});
+                res.status(201).send({"username":req.body.username, "password":hash, "administrator":req.body.administrator});
             })
         })
     } else {
@@ -106,7 +106,7 @@ app.post('/api/user/login/', (req, res, next) => {
         } else {
             bcrypt.compare(password, userFound.password, (err,result)=>{
                 if(result){
-                    let token = jwt.sign({username:userFound.username}, 'PaisleyDaBes');
+                    let token = jwt.sign({username:userFound.username, administrator:userFound.administrator}, 'PaisleyDaBes');
                     res.status(200).send({token:token});
                 } else {
                     res.status(401).send({status:401, message:"Invalid username or password"});

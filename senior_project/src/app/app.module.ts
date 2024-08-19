@@ -26,6 +26,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { EditComponent } from './view/volunteer/edit/edit.component';
 import {MatCardModule} from '@angular/material/card';
 import { RegisterComponent } from './view/register/register.component';
+import { AdminComponent } from './view/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { RegisterComponent } from './view/register/register.component';
     CreateComponent,
     EditComponent,
     RegisterComponent,
+    AdminComponent,
   ],
   imports: [
     MatCardModule,

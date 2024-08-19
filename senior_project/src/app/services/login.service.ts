@@ -12,10 +12,11 @@ export class LoginService {
 
   constructor(private httpClient:HttpClient) { }
 
-  async CreatUser(email:string, password:string){
+  async CreateUser(email:string, password:string, administrator:boolean){
     let newUser = {
       username:email,
       password:password,
+      administrator:administrator
     }
     try{
       let response = await firstValueFrom(this.httpClient.post('http://localhost:3000/api/user/', newUser));
@@ -35,7 +36,7 @@ export class LoginService {
     httpHeaders =httpHeaders.set(`Authorization`, `Basic ${authEnc}`);
     try{
       let result = await firstValueFrom(this.httpClient.post<Token>('http://localhost:3000/api/user/login/', null, {headers: httpHeaders}));
-      console.log(result);
+      this.currentToken = result;
       localStorage.setItem('token', JSON.stringify(result));
       this.UserLoggedIn.emit(true);
       return result;
