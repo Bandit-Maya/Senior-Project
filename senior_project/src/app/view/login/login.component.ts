@@ -19,14 +19,20 @@ export class LoginComponent {
     let result = await this.loginSvc.LoginUser(this.username, this.password);
 
     if(result){
-      const token = localStorage.getItem('token');
+      const token = sessionStorage.getItem('token');
       const parsedToken = token?.split("\"")[3];
       const payload = atob(parsedToken!.split('.')[1]);
       const adminParse = payload!.split(',');
       const admin = adminParse[1].split(':')[1];
-      localStorage.setItem('Admin', admin);
+      sessionStorage.setItem('Admin', admin);
+      if(admin === 'true'){
+        console.log('Admin logged in');
+        this.router.navigate(['/Admin']);
+      } else {
+        console.log("Reggo");
+        this.router.navigate(['/']);
+      }
       
-      this.router.navigate(['/']);
     }
   }
 }

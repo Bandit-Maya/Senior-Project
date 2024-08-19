@@ -13,5 +13,14 @@
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
       <mat-icon routerLink = '/Volunteer'>groups</mat-icon>
     </button>
-    
+    <div *ngIf="admin === 'true'">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon routerLink = '/Admin'>groups</mat-icon>
+      </button>
+    </div>
+    <div *ngIf="loggedIn === true">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="logoutUser()">
+        <mat-icon routerLink = '/'>logout</mat-icon>
+      </button>
+    </div>
   </mat-toolbar>

@@ -37,7 +37,7 @@ export class LoginService {
     try{
       let result = await firstValueFrom(this.httpClient.post<Token>('http://localhost:3000/api/user/login/', null, {headers: httpHeaders}));
       this.currentToken = result;
-      localStorage.setItem('token', JSON.stringify(result));
+      sessionStorage.setItem('token', JSON.stringify(result));
       this.UserLoggedIn.emit(true);
       return result;
     } catch(err){
@@ -46,5 +46,11 @@ export class LoginService {
       }
       return false;
     }
+  }
+
+  async LogoutUser(){
+    sessionStorage.clear();
+    this.currentToken = null;
+    this.UserLoggedIn.emit(false);
   }
 }
