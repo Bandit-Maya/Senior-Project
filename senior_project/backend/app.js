@@ -1,9 +1,17 @@
+
+
+const bcrypt = require('bcrypt');
 const express = require('express'); 
 const app = express();
 const bodyParser = require("body-parser");
-
+const jwt = require('jsonwebtoken');
 const Opportunity = require('./models/opportunity');
 const { default: mongoose } = require('mongoose');
+const cors = require('cors');
+
+app.use(cors());
+
+let users = [];
 
 //this is how you connect to the mongoDB with your admin creds. 
 //the creds are Account: jophnpetefoster  and Password: rg2DUu9me8R6CDyr
@@ -62,5 +70,52 @@ app.delete("/api/opportunities/:id", (req, res, next) =>{
     })
 });
 
+app.post('/api/user/', (req, res, next)=>{
+    const saltRounds = 10;
+    if(req.body.username && req.body.password && !users.find(e => e.username == req.body.username)){
+        bcrypt.genSalt(saltRounds, (err, salt)=>{
+            bcrypt.hash(req.body.password, salt, (err, hash)=>{
+                var newUser = {"username":req.body.username, "password":hash};
+                users.push(newUser);
+                console.log(newUser);
+                res.status(201).send({"username":req.body.username, "password":hash});
+            })
+        })
+    } else {
+        res.status(400).send({status:400, message:'Username already in use'});
+    }
+})
 
+
+app.post('/api/user/login/', (req, res, next) => {
+    if(req.headers['authorization']){
+        let userData = req.headers['authorization'].split(' ')[1];
+        let decodedUserData = atob(userData);
+        let userName = decodedUserData.split(':')[0];
+        let password = decodedUserData.split(':')[1];
+        let userFound = undefined;
+        for(let i = 0; i < users.length; i++){
+            if(users[i].username === userName)
+            {
+                userFound = users[i];
+                break;
+            }
+        }
+        if(userFound === undefined){
+            res.status(401).send({message:"Invalid username or password"});
+        } else {
+            bcrypt.compare(password, userFound.password, (err,result)=>{
+                if(result){
+                    let token = jwt.sign({username:userFound.username}, 'PaisleyDaBes');
+                    res.status(200).send({token:token});
+                } else {
+                    res.status(401).send({status:401, message:"Invalid username or password"});
+                }
+            })
+        } 
+    }else {
+        res.status(401).send({status:401, message:"Invalid username or password"});
+
+    }
+})
 module.exports = app;

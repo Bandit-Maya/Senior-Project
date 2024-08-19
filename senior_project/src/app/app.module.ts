@@ -24,6 +24,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { EditComponent } from './view/volunteer/edit/edit.component';
+import {MatCardModule} from '@angular/material/card';
+import { RegisterComponent } from './view/register/register.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +36,10 @@ import { EditComponent } from './view/volunteer/edit/edit.component';
     VolunteerComponent,
     CreateComponent,
     EditComponent,
+    RegisterComponent,
   ],
   imports: [
+    MatCardModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,

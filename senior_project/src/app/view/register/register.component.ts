@@ -2,21 +2,19 @@ import { Component } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.css'
 })
-export class LoginComponent {
+export class RegisterComponent {
   username:string = '';
   password:string = '';
 
   constructor(private loginSvc: LoginService, private router:Router){}
-
-  async LoginUser(){
-    let result = await this.loginSvc.LoginUser(this.username, this.password);
-
+  
+  async registerUser(){
+    let result = await this.loginSvc.CreatUser(this.username, this.password);
     if(result){
       console.log(result);
     }
