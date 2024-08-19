@@ -6,7 +6,7 @@ export const adminguardGuard: CanActivateFn = (route, state) => {
   let router = inject(Router);
   let loginSvc= inject(LoginService);
   let admin = sessionStorage.getItem('Admin');
-  if(admin === 'true' && loginSvc.currentToken){
+  if(admin === 'true'){
     return true;
   } else {
     router.navigate(['/']);

@@ -28,6 +28,7 @@ import {MatCardModule} from '@angular/material/card';
 import { RegisterComponent } from './view/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { AdminComponent } from './view/admin/admin.component';
+import { ManagevolunteersComponent } from './view/managevolunteers/managevolunteers.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { AdminComponent } from './view/admin/admin.component';
     EditComponent,
     RegisterComponent,
     AdminComponent,
+    ManagevolunteersComponent,
   ],
   imports: [
     MatCardModule,
