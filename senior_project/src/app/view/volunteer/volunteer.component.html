@@ -1,10 +1,16 @@
 <app-navbar></app-navbar>
 
-<h2 routerLink="/Volunteer/Create">Create a new volunteer</h2>
+<h2 routerLink="/Volunteer/Create">Click to create a new volunteer</h2>
 <br>
-<h2 routerLink="/Volunteer/Edit">Edit a volunteer</h2>
-
+<app-search></app-search>
 <table mat-table [dataSource]="volunteers">
+    <ngcontainer matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let volunteer">
+            <button mat-button (click)="onEdit(volunteer.username)">Edit</button>
+        </td>
+    </ngcontainer>
+
     <ngcontainer matColumnDef="firstName">
         <th mat-header-cell *matHeaderCellDef>First Name</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.firstName}}</td>

@@ -22,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { EditComponent } from './view/volunteer/edit/edit.component';
+import { SearchComponent } from './view/volunteer/search/search.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { EditComponent } from './view/volunteer/edit/edit.component';
     VolunteerComponent,
     CreateComponent,
     EditComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
