@@ -24,6 +24,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { EditComponent } from './view/volunteer/edit/edit.component';
+import { SearchComponent } from './view/volunteer/search/search.component';
+
 import {MatCardModule} from '@angular/material/card';
 import { RegisterComponent } from './view/register/register.component';
 import { FormsModule } from '@angular/forms';
@@ -40,6 +42,7 @@ import { ManagevolunteersComponent } from './view/managevolunteers/managevolunte
     VolunteerComponent,
     CreateComponent,
     EditComponent,
+    SearchComponent
     RegisterComponent,
     AdminComponent,
     ManagevolunteersComponent,
