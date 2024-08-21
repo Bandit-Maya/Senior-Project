@@ -1,28 +1,17 @@
 <app-navbar></app-navbar>
 
-<mat-card class="login-card">
-    <mat-card-header>
-        <mat-card-title>Manage Volunteers</mat-card-title>
-      </mat-card-header>
-    
-    <button mat-flat-button color="primary" class="option-button" mat-button [matMenuTriggerFor]="menu">Change Volunteer Filter</button>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="FilterVols('Approved')">Approved/Pending Aprroval</button>
-        <button mat-menu-item (click)="FilterVols('Approved')">Approved</button>
-        <button mat-menu-item (click)="FilterVols('Approved')">Pending Approval</button>
-        <button mat-menu-item (click)="FilterVols('Disapproved')">Disapproved</button>
-        <button mat-menu-item (click)="FilterVols('Disapproved')">Inactive</button>
-        <button mat-menu-item (click)="FilterVols('All')">All</button>
-    </mat-menu>
-    <button mat-flat-button color="primary" class="option-button" >Search Volunteers</button>
-    <button mat-flat-button color="primary" class="option-button">View Volunteer Opportunity Matches</button>
-    <button mat-flat-button color="primary" class="option-button" [routerLink]="['/Volunteer/Edit']">Edit Volunteer</button>
-    <button mat-flat-button color="primary" class="option-button" [routerLink]="['/Volunteer/Create']">Add new volunteer</button>
-    
-    
-</mat-card>
+<h2 routerLink="/Volunteer/Create">Create a new volunteer</h2>
+<br>
+<h2 routerLink="/Volunteer/Edit">Edit a volunteer</h2>
 
 <table mat-table [dataSource]="volunteers">
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let volunteer">
+            <button mat-button (click)="onEdit(volunteer.username)">Edit</button>
+        </td>
+    </ng-container>
+
     <ng-container matColumnDef="firstName">
         <th mat-header-cell *matHeaderCellDef>First Name</th>
         <td mat-cell *matCellDef="let volunteer">{{volunteer.firstName}}</td>
@@ -120,4 +109,5 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns:displayedColumns"></tr>
+
 </table>

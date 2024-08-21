@@ -1,0 +1,20 @@
+<h2>Search Volunteers</h2>
+
+<mat-form-field appearance="fill">
+  <mat-label>Search Volunteers</mat-label>
+  <input matInput [(ngModel)]="searchInfo" placeholder="Enter name or username">
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="onSearch()">Search</button>
+
+<div *ngIf="searchResult.length > 0">
+  <h3>Search Results</h3>
+  <ul>
+    <li *ngFor="let volunteer of searchResult">
+      {{ volunteer.firstName }} {{ volunteer.lastName }} ({{ volunteer.username }})
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="noResult">
+  <p>No volunteers found.</p>
+</div>

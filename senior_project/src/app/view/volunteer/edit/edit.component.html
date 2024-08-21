@@ -1,1 +1,118 @@
-<p>edit works!</p>
+<app-navbar></app-navbar>
+
+<h2>Edit a Volunteer</h2>
+<h3>Do not change username or it won't work</h3>
+<form (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>First Name</mat-label>
+    <input matInput id="firstName" [(ngModel)]="enteredfirst" name="firstName">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input matInput id="lastName" [(ngModel)]="enteredlast" name="lastName">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Username</mat-label>
+    <input matInput id="username" [(ngModel)]="enteredUsername" name="username">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" id="password" [(ngModel)]="enteredPassword" name="password">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Center Preference</mat-label>
+    <mat-select [(ngModel)]="enteredCenter" name="centerPref">
+      <mat-option value="Downtown">Downtown</mat-option>
+      <mat-option value="Southeast">Southeast</mat-option>
+      <mat-option value="pablocreek">Pablo Creek</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Skills (Please separate with a comma)</mat-label>
+    <input matInput id="skills" [(ngModel)]="enteredSkills" name="skills">
+  </mat-form-field>
+  <br>
+  <label>Availability</label>
+  <div *ngFor="let day of daysOfWeek">
+    <mat-checkbox 
+      [checked]="day.selected" 
+      (change)="onCheckboxChange(day.value)">
+      {{ day.name }}
+    </mat-checkbox>
+  </div>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Address</mat-label>
+    <input matInput id="address" [(ngModel)]="enteredAddress" name="address">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Home Cell</mat-label>
+    <input matInput id="homeCell" [(ngModel)]="enteredHomeCell" name="homeCell">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Work Cell</mat-label>
+    <input matInput id="workCell" [(ngModel)]="enteredWorkCell" name="workCell">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput id="email" [(ngModel)]="enteredEmail" name="email">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Educational Background (Please separate with a comma)</mat-label>
+    <input matInput id="education" [(ngModel)]="enteredEducation" name="education">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Current Licenses</mat-label>
+    <input matInput id="currentLicenses" [(ngModel)]="enteredLicenses" name="currentLicenses">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Emergency Contact Name</mat-label>
+    <input matInput id="emergencyName" [(ngModel)]="enteredEmerName" name="emergencyName">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Emergency Contact Cell</mat-label>
+    <input matInput id="emergencyCell" [(ngModel)]="enteredEmerCell" name="emergencyCell">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Emergency Contact Email</mat-label>
+    <input matInput id="emergencyEmail" [(ngModel)]="enteredEmerEmail" name="emergencyEmail">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Emergency Contact Address</mat-label>
+    <input matInput id="emergencyAddress" [(ngModel)]="enteredEmerAddr" name="emergencyAddress">
+  </mat-form-field>
+  <br>
+  <mat-radio-group [(ngModel)]="enteredDrivers" name="driversLicense">
+    <label>Drivers License on File?</label><br>
+    <mat-radio-button [value]="true">Yes</mat-radio-button>
+    <mat-radio-button [value]="false">No</mat-radio-button>
+  </mat-radio-group>
+  <br>
+  <mat-radio-group [(ngModel)]="enteredSocial" name="socialCard">
+    <label>Social Security Card on File?</label><br>
+    <mat-radio-button [value]="true">Yes</mat-radio-button>
+    <mat-radio-button [value]="false">No</mat-radio-button>
+  </mat-radio-group>
+  <br>
+  <mat-radio-group [(ngModel)]="enteredStatus" name="status">
+    <label>Volunteer Status Approval</label><br>
+    <mat-radio-button [value]="true">Yes</mat-radio-button>
+    <mat-radio-button [value]="false">No</mat-radio-button>
+  </mat-radio-group>
+  <br>
+  <button mat-raised-button color="primary" type="submit">Submit</button>
+</form>
