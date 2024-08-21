@@ -1,0 +1,33 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  .login-card {
+    justify-content: center;
+    width: 20%;
+    margin: 0 auto;
+  
+  }
+  label{
+    margin-left:20px;
+    margin-top:20px;
+    background-color: whitesmoke;
+  }
+  
+  mat-card-header{
+    justify-content: center;
+    background-color: whitesmoke;
+  }
+  
+  input{
+    margin-top:10px;
+    margin-bottom:10px;
+    width:40%;
+    margin-left:20px;
+  }
+  mat-card{
+    background-color: whitesmoke;
+  }
+
+.option-button{
+    margin-top:10px;
+}

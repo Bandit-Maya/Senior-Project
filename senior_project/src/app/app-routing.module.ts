@@ -28,12 +28,12 @@ const routes: Routes = [
   },
   {
     path:'Volunteer/Create',
-    canActivate:[noauthGuard],
+    canActivate:[adminguardGuard],
     component:CreateComponent
   },
   {
     path:'Volunteer/Edit',
-    canActivate:[noauthGuard],
+    canActivate:[adminguardGuard],
     component:EditComponent
   },
   {

@@ -1,8 +1,26 @@
 <app-navbar></app-navbar>
 
-<h2 routerLink="/Volunteer/Create">Create a new volunteer</h2>
-<br>
-<h2 routerLink="/Volunteer/Edit">Edit a volunteer</h2>
+<mat-card class="login-card">
+    <mat-card-header>
+        <mat-card-title>Manage Volunteers</mat-card-title>
+      </mat-card-header>
+    
+    <button mat-flat-button color="primary" class="option-button" mat-button [matMenuTriggerFor]="menu">Change Volunteer Filter</button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="FilterVols('Approved')">Approved/Pending Aprroval</button>
+        <button mat-menu-item (click)="FilterVols('Approved')">Approved</button>
+        <button mat-menu-item (click)="FilterVols('Approved')">Pending Approval</button>
+        <button mat-menu-item (click)="FilterVols('Disapproved')">Disapproved</button>
+        <button mat-menu-item (click)="FilterVols('Disapproved')">Inactive</button>
+        <button mat-menu-item (click)="FilterVols('All')">All</button>
+    </mat-menu>
+    <button mat-flat-button color="primary" class="option-button" >Search Volunteers</button>
+    <button mat-flat-button color="primary" class="option-button">View Volunteer Opportunity Matches</button>
+    <button mat-flat-button color="primary" class="option-button" [routerLink]="['/Volunteer/Edit']">Edit Volunteer</button>
+    <button mat-flat-button color="primary" class="option-button" [routerLink]="['/Volunteer/Create']">Add new volunteer</button>
+    
+    
+</mat-card>
 
 <table mat-table [dataSource]="volunteers">
     <ng-container matColumnDef="firstName">

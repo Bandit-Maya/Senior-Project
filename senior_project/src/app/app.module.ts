@@ -28,7 +28,7 @@ import {MatCardModule} from '@angular/material/card';
 import { RegisterComponent } from './view/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { AdminComponent } from './view/admin/admin.component';
-import { ManagevolunteersComponent } from './view/managevolunteers/managevolunteers.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -42,7 +42,6 @@ import { ManagevolunteersComponent } from './view/managevolunteers/managevolunte
     EditComponent,
     RegisterComponent,
     AdminComponent,
-    ManagevolunteersComponent,
   ],
   imports: [
     MatCardModule,
@@ -60,7 +59,8 @@ import { ManagevolunteersComponent } from './view/managevolunteers/managevolunte
     MatInputModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatTableModule
+    MatTableModule,
+    MatMenuModule
   ],
   providers: [
     provideAnimationsAsync()
