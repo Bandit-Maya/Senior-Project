@@ -32,7 +32,9 @@
   <div class="matchedVolunteersList">
     <h3>Volunteer Matches</h3>
     <ul>
-      <li>test</li>
+      @for(volunteer of matchedVolunteers; track volunteer.driversLicense){
+      <li>{{ volunteer.firstName }} {{ volunteer.skills }}</li>
+      }
     </ul>
   </div>
 </article>
